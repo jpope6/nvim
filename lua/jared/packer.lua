@@ -50,8 +50,6 @@ return require('packer').startup(function(use)
           config = function() require("nvim-autopairs").setup {} end
       }
 
-      use "github/copilot.vim"
-
       use('neovim/nvim-lspconfig')
       use('jose-elias-alvarez/null-ls.nvim')
       use('MunifTanjim/prettier.nvim')
