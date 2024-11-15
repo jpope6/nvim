@@ -24,6 +24,8 @@ vim.g.maplocalleader = "\\"
 vim.opt.number = true
 vim.opt["tabstop"] = 4
 vim.opt["shiftwidth"] = 4
+vim.opt.cmdheight = 1
+vim.opt.cmdwinheight = 1
 
 -- Setup lazy.nvim
 require("lazy").setup({

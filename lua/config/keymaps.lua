@@ -19,3 +19,6 @@ end, { desc = "Next Warning" })
 vim.keymap.set('n', '[w', function()
 	vim.diagnostic.goto_prev({ severity = vim.diagnostic.severity.WARN })
 end, { desc = "Previous Warning" })
+
+-- save file
+vim.keymap.set({ "i", "x", "n", "s" }, "<C-s>", "<cmd>w<cr><esc>", { desc = "Save File" })

@@ -3,6 +3,8 @@ return {
 	dependencies = {
 		"williamboman/mason.nvim",
 		"williamboman/mason-lspconfig.nvim",
+		"mfussenegger/nvim-lint",
+		"rshkarin/mason-nvim-lint",
 		"hrsh7th/cmp-nvim-lsp",
 		"hrsh7th/cmp-buffer",
 		"hrsh7th/cmp-path",
@@ -95,9 +97,9 @@ return {
 					if cmp.visible() then
 						cmp.confirm({ select = true }) -- Confirm the selection if the menu is open
 					else
-						fallback()                     -- Default behavior of Enter (e.g., newline)
+						fallback()   -- Default behavior of Enter (e.g., newline)
 					end
-				end, { "i", "s" }),                    -- Works in insert and select modes
+				end, { "i", "s" }),  -- Works in insert and select modes
 				["<C-e>"] = cmp.mapping.abort(),
 			}),
 			sources = cmp.config.sources({
