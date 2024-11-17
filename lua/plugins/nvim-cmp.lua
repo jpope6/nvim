@@ -13,17 +13,6 @@ return {
 		"L3MON4D3/LuaSnip",
 		"saadparwaiz1/cmp_luasnip",
 		"j-hui/fidget.nvim",
-		{
-			"tzachar/cmp-tabnine",
-			build = (vim.loop.os_uname().sysname == "Windows_NT") and "pwsh -noni .\\install.ps1" or "./install.sh",
-			config = function()
-				require("cmp_tabnine.config"):setup({
-					max_lines = 1000,
-					max_num_results = 3,
-					sort = true,
-				})
-			end,
-		},
 	},
 	config = function()
 		local cmp = require("cmp")
@@ -90,9 +79,9 @@ return {
 				end,
 			},
 			mapping = cmp.mapping.preset.insert({
-				["<C-j>"] = cmp.mapping.select_next_item(cmp_select),
-				["<C-k>"] = cmp.mapping.select_prev_item(cmp_select),
-				["<C-l>"] = cmp.mapping.confirm({ select = true }),
+				["<A-j>"] = cmp.mapping.select_next_item(cmp_select),
+				["<A-k>"] = cmp.mapping.select_prev_item(cmp_select),
+				["<A-l>"] = cmp.mapping.confirm({ select = true }),
 				["<CR>"] = cmp.mapping(function(fallback)
 					if cmp.visible() then
 						cmp.confirm({ select = true }) -- Confirm the selection if the menu is open
@@ -100,7 +89,7 @@ return {
 						fallback()   -- Default behavior of Enter (e.g., newline)
 					end
 				end, { "i", "s" }),  -- Works in insert and select modes
-				["<C-e>"] = cmp.mapping.abort(),
+				["<A-e>"] = cmp.mapping.abort(),
 			}),
 			sources = cmp.config.sources({
 				{ name = "cmp_tabnine", group_index = 1, priority = 100 },
@@ -109,14 +98,6 @@ return {
 			}, {
 				{ name = "buffer" },
 			}),
-			formatting = {
-				format = function(entry, item)
-					if entry.source.name == "cmp_tabnine" then
-						item.menu = "" -- Hide percentage in the menu for Tabnine
-					end
-					return item
-				end,
-			},
 		})
 
 		-- Diagnostic settings
