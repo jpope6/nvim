@@ -2,6 +2,7 @@
 vim.opt.tabstop = 4
 vim.opt.shiftwidth = 4
 vim.opt.expandtab = true
+vim.opt.clipboard = "unnamedplus" -- Use system clipboard
 
 -- This is the only way I have been able to get the formatter
 -- to not go crazy in the work project
