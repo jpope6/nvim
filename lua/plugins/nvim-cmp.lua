@@ -86,13 +86,12 @@ return {
 					if cmp.visible() then
 						cmp.confirm({ select = true }) -- Confirm the selection if the menu is open
 					else
-						fallback()   -- Default behavior of Enter (e.g., newline)
+						fallback() -- Default behavior of Enter (e.g., newline)
 					end
-				end, { "i", "s" }),  -- Works in insert and select modes
+				end, { "i", "s" }), -- Works in insert and select modes
 				["<A-e>"] = cmp.mapping.abort(),
 			}),
 			sources = cmp.config.sources({
-				{ name = "cmp_tabnine", group_index = 1, priority = 100 },
 				{ name = "nvim_lsp" },
 				{ name = "luasnip" }, -- For luasnip users
 			}, {
