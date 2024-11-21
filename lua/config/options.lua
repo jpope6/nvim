@@ -2,7 +2,23 @@
 vim.opt.tabstop = 4
 vim.opt.shiftwidth = 4
 vim.opt.expandtab = true
-vim.opt.clipboard = "unnamedplus" -- Use system clipboard
+
+-- WSL Clipboard support
+if vim.fn.has("wsl") == 1 then
+	vim.api.nvim_set_option("clipboard", "unnamedplus")
+	vim.g.clipboard = {
+		name = "WslClipboard",
+		copy = {
+			["+"] = "clip.exe",
+			["*"] = "clip.exe",
+		},
+		paste = {
+			["+"] = 'powershell.exe -c [Console]::Out.Write($(Get-Clipboard -Raw).tostring().replace("`r", ""))',
+			["*"] = 'powershell.exe -c [Console]::Out.Write($(Get-Clipboard -Raw).tostring().replace("`r", ""))',
+		},
+		cache_enabled = 0,
+	}
+end
 
 -- This is the only way I have been able to get the formatter
 -- to not go crazy in the work project
